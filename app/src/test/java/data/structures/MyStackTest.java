@@ -28,6 +28,17 @@ public class MyStackTest {
     }
 
     @Test
+    public void stackPeekTest() {
+        MyStack stack = new MyStack();
+
+        stack.push(4);
+        Object expected = 4;
+        Object actual = stack.peek();
+
+        assertEquals("Stack peek should return 4", expected, actual);
+    }
+
+    @Test
     public void stackPopTest() {
         MyStack stack = new MyStack();
 

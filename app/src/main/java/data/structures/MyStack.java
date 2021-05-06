@@ -14,6 +14,13 @@ public class MyStack {
         top = node;
     }
 
+    public Object peek() {
+        try {
+            return top.data;
+        } catch (NullPointerException e) {
+            return null;
+        }
+    }
 
     public Object pop() {
         try {
