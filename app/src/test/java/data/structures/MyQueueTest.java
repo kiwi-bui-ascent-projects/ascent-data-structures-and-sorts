@@ -24,7 +24,7 @@ public class MyQueueTest {
         boolean expected = false;
         boolean actual = queue.isEmpty();
 
-        assertEquals("New queue should be empty", expected, actual);
+        assertEquals("New queue should not be empty", expected, actual);
     }
     @Test
     public void queuePeekTest() {
@@ -43,9 +43,10 @@ public class MyQueueTest {
 
         queue.add(4);
         queue.add(6);
+        queue.add(8);
         Object expected = 6;
+        queue.remove();
         Object actual = queue.remove();
-        actual = queue.remove();
 
         assertEquals("Queue remove twice should return 6", expected, actual);
     }

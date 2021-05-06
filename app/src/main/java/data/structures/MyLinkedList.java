@@ -2,16 +2,6 @@ package data.structures;
 
 @SuppressWarnings("DuplicatedCode")
 public class MyLinkedList {
-
-    public class Node {
-        Node next;
-        Object data;
-
-        public Node(Object data) {
-            this.data = data;
-        }
-    }
-
     Node head;
 
     public boolean isEmpty() {
