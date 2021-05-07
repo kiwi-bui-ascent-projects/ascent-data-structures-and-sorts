@@ -11,8 +11,11 @@ public class MyQueue {
 
     public void add(Object data) {
         Node node = new Node(data);
+
         head = (head == null) ? node : head;
+
         if (tail != null) { tail.next = node; }
+
         tail = node;
     }
 
@@ -28,8 +31,11 @@ public class MyQueue {
     public Object remove() {
         try {
             Object data = head.data;
+
             head = head.next;
+
             tail = (head == null) ? null : tail;
+
             return data;
         } catch (NullPointerException e) {
             return null;

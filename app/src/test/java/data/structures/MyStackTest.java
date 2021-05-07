@@ -5,7 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MyStackTest {
-
     @Test
     public void stackIsEmptyTest() {
         MyStack stack = new MyStack();
@@ -13,7 +12,7 @@ public class MyStackTest {
         boolean expected = true;
         boolean actual = stack.isEmpty();
 
-        assertEquals("New stack should be empty", expected, actual);
+        assertEquals("Should be empty", expected, actual);
     }
 
     @Test
@@ -24,7 +23,7 @@ public class MyStackTest {
         boolean expected = false;
         boolean actual = stack.isEmpty();
 
-        assertEquals("Stack should be not be empty after adding one node", expected, actual);
+        assertEquals("Should be not be empty after adding", expected, actual);
     }
 
     @Test
@@ -35,7 +34,7 @@ public class MyStackTest {
         Object expected = 4;
         Object actual = stack.peek();
 
-        assertEquals("Stack peek should return 4", expected, actual);
+        assertEquals("Peek should return 4", expected, actual);
     }
 
     @Test
@@ -47,6 +46,6 @@ public class MyStackTest {
         Object expected = 6;
         Object actual = stack.pop();
 
-        assertEquals("Stack pop should return most recently added", expected, actual);
+        assertEquals("Should return most recently added", expected, actual);
     }
 }

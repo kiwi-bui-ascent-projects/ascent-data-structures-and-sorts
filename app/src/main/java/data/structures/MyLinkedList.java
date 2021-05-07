@@ -1,6 +1,5 @@
 package data.structures;
 
-@SuppressWarnings("DuplicatedCode")
 public class MyLinkedList {
     Node head;
 
@@ -32,7 +31,7 @@ public class MyLinkedList {
         try {
             return current.data;
         } catch (NullPointerException e) {
-            throw new IndexOutOfBoundsException();
+            return null;
         }
     }
 

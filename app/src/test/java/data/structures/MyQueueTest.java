@@ -5,7 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MyQueueTest {
-
     @Test
     public void queueIsEmptyTest() {
         MyQueue queue = new MyQueue();
@@ -13,7 +12,7 @@ public class MyQueueTest {
         boolean expected = true;
         boolean actual = queue.isEmpty();
 
-        assertEquals("New queue should be empty", expected, actual);
+        assertEquals("Should be empty", expected, actual);
     }
 
     @Test
@@ -24,7 +23,7 @@ public class MyQueueTest {
         boolean expected = false;
         boolean actual = queue.isEmpty();
 
-        assertEquals("New queue should not be empty", expected, actual);
+        assertEquals("Should not be empty after adding", expected, actual);
     }
     @Test
     public void queuePeekTest() {
@@ -34,7 +33,7 @@ public class MyQueueTest {
         Object expected = 4;
         Object actual = queue.peek();
 
-        assertEquals("Queue peek should return 4", expected, actual);
+        assertEquals("Peek should return 4", expected, actual);
     }
 
     @Test
@@ -48,6 +47,6 @@ public class MyQueueTest {
         queue.remove();
         Object actual = queue.remove();
 
-        assertEquals("Queue remove twice should return 6", expected, actual);
+        assertEquals("Should return 6 after removing", expected, actual);
     }
 }

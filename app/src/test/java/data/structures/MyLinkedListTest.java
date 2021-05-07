@@ -11,7 +11,7 @@ public class MyLinkedListTest {
     public void isEmptyTest() {
         MyLinkedList myLinkedList = new MyLinkedList();
 
-        assertEquals("New linked list should be empty", true, myLinkedList.isEmpty());
+        assertEquals("Should be empty", true, myLinkedList.isEmpty());
     }
 
     @Test
@@ -20,7 +20,7 @@ public class MyLinkedListTest {
 
         myLinkedList.add(4);
 
-        assertEquals("Linked list should not be empty", false, myLinkedList.isEmpty());
+        assertEquals("Should not be empty", false, myLinkedList.isEmpty());
     }
 
     @Test
@@ -30,23 +30,19 @@ public class MyLinkedListTest {
         myLinkedList.add(4);
         myLinkedList.add(6);
 
-        assertEquals("Should get 2nd element", 6, myLinkedList.get(2));
+        assertEquals("Should return 2nd element", 6, myLinkedList.get(2));
     }
 
     @Test
-    public void getThrowExceptionTest() {
+    public void getNullTest() {
         MyLinkedList myLinkedList = new MyLinkedList();
 
         myLinkedList.add(4);
         myLinkedList.add(6);
 
-        try {
-            myLinkedList.get(3);
-            fail("Did not throw IndexOutOfBoundsException");
-        } catch (IndexOutOfBoundsException e) {
-            assertEquals("Should throw IndexOutOfBoundsException", IndexOutOfBoundsException.class,
-                    e.getClass());
-        }
+        Object actual = myLinkedList.get(3);
+
+        assertEquals("Should return null if value does not exist", null, actual);
     }
 
     @Test
@@ -56,7 +52,7 @@ public class MyLinkedListTest {
         myLinkedList.add(4);
         myLinkedList.add(6);
 
-        assertEquals("Should get first element", 4, myLinkedList.getFirst());
+        assertEquals("Should return first element", 4, myLinkedList.getFirst());
     }
 
     @Test
@@ -66,7 +62,7 @@ public class MyLinkedListTest {
         myLinkedList.add(4);
         myLinkedList.add(6);
 
-        assertEquals("Should get last element", 6, myLinkedList.getLast());
+        assertEquals("Should return last element", 6, myLinkedList.getLast());
     }
 
     @Test
@@ -77,7 +73,7 @@ public class MyLinkedListTest {
         myLinkedList.add(6);
         myLinkedList.add(8);
 
-        assertEquals("Should index of object", 1, myLinkedList.contains(6));
+        assertEquals("Should return 1 if value exists", 1, myLinkedList.contains(6));
     }
 
     @Test
@@ -89,7 +85,7 @@ public class MyLinkedListTest {
         myLinkedList.delete("Second");
         myLinkedList.delete("First");
 
-        assertEquals("Should delete and make linked list empty", true, myLinkedList.isEmpty());
+        assertEquals("Should delete and make become empty", true, myLinkedList.isEmpty());
     }
 
     @Test
@@ -100,7 +96,7 @@ public class MyLinkedListTest {
         myLinkedList.add("Second");
         myLinkedList.delete(2);
 
-        assertEquals("Linked list should not contain 'test'", -1, myLinkedList.contains("Second"));
+        assertEquals("Should delete 2nd node", -1, myLinkedList.contains("Second"));
     }
 
     @Test
@@ -112,7 +108,7 @@ public class MyLinkedListTest {
 
         try {
             myLinkedList.delete(3);
-            fail("Did not throw IndexOutOfBoundsException");
+            fail("Did not throw expected IndexOutOfBoundsException");
         } catch (IndexOutOfBoundsException e) {
             assertEquals("Should throw IndexOutOfBoundsException", IndexOutOfBoundsException.class,
                     e.getClass());
