@@ -1,7 +1,6 @@
 package data.structures;
 
 public class Node {
-
     Node next;
     Object data;
 

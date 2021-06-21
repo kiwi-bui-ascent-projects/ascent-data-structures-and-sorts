@@ -1,19 +1,21 @@
-package data.structures;
+package data.structures.sorts;
+
+import static data.structures.sorts.helper.Helper.swap;
 
 public class QuickSort {
     public static void sort(int[] array) {
-        split(array, 0, array.length - 1);
+        sort(array, 0, array.length - 1);
     }
 
-    private static void split(int[] array, int left, int right) {
+    private static void sort(int[] array, int left, int right) {
         if (left >= right) {
             return;
         }
 
         int pivotPoint = (left + right) / 2;
         int midPoint = sort(array, left, right, pivotPoint);
-        split(array, left, midPoint - 1);
-        split(array, midPoint, right);
+        sort(array, left, midPoint - 1);
+        sort(array, midPoint, right);
     }
 
     private static int sort(int[] array, int left, int right, int pivotPoint) {
@@ -27,9 +29,7 @@ public class QuickSort {
             }
 
             if (left <= right) {
-                int placeholder = array[left];
-                array[left] = array[right];
-                array[right] = placeholder;
+                swap(array, left, right);
 
                 left++;
                 right--;

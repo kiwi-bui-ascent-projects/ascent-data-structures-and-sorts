@@ -1,23 +1,26 @@
 package data.structures;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+public class MyLinkedListTests {
+    MyLinkedList myLinkedList;
 
-public class MyLinkedListTest {
+    @Before
+    public void setup() {
+        myLinkedList = new MyLinkedList();
+    }
+
     @Test
     public void isEmptyTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
         assertEquals("Should be empty", true, myLinkedList.isEmpty());
     }
 
     @Test
     public void canAddFirstTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
         myLinkedList.add(4);
 
         assertEquals("Should not be empty", false, myLinkedList.isEmpty());
@@ -25,8 +28,6 @@ public class MyLinkedListTest {
 
     @Test
     public void canGetTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
         myLinkedList.add(4);
         myLinkedList.add(6);
 
@@ -34,21 +35,21 @@ public class MyLinkedListTest {
     }
 
     @Test
-    public void getNullTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
+    public void getIndexExceptionTest() {
         myLinkedList.add(4);
         myLinkedList.add(6);
 
-        Object actual = myLinkedList.get(3);
-
-        assertEquals("Should return null if value does not exist", null, actual);
+        try {
+            Object actual = myLinkedList.get(3);
+            fail("Did not throw expected IndexOutOfBoundsException");
+        } catch (IndexOutOfBoundsException e) {
+            assertEquals("Should throw IndexOutOfBoundsException", IndexOutOfBoundsException.class,
+                    e.getClass());
+        }
     }
 
     @Test
     public void getFirstTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
         myLinkedList.add(4);
         myLinkedList.add(6);
 
@@ -57,8 +58,6 @@ public class MyLinkedListTest {
 
     @Test
     public void getLastTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
         myLinkedList.add(4);
         myLinkedList.add(6);
 
@@ -67,8 +66,6 @@ public class MyLinkedListTest {
 
     @Test
     public void containsTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
         myLinkedList.add(5);
         myLinkedList.add(6);
         myLinkedList.add(8);
@@ -77,9 +74,24 @@ public class MyLinkedListTest {
     }
 
     @Test
-    public void deleteTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
+    public void deleteOneTest() {
+        myLinkedList.add("First");
+        myLinkedList.delete("First");
 
+        assertEquals("Should delete and make become empty", true, myLinkedList.isEmpty());
+    }
+
+    @Test
+    public void deleteNoneExistTest() {
+        myLinkedList.add("First");
+        myLinkedList.delete("Second");
+
+        assertEquals("Deletion should not have occurred as object does not exist",
+                false, myLinkedList.isEmpty());
+    }
+
+    @Test
+    public void deleteManyTest() {
         myLinkedList.add("First");
         myLinkedList.add("Second");
         myLinkedList.delete("Second");
@@ -90,8 +102,6 @@ public class MyLinkedListTest {
 
     @Test
     public void deleteNthTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
         myLinkedList.add("First");
         myLinkedList.add("Second");
         myLinkedList.delete(2);
@@ -101,8 +111,6 @@ public class MyLinkedListTest {
 
     @Test
     public void deleteNthExceptionTest() {
-        MyLinkedList myLinkedList = new MyLinkedList();
-
         myLinkedList.add("First");
         myLinkedList.add("Second");
 

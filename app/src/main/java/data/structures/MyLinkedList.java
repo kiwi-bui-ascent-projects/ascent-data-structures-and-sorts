@@ -4,39 +4,37 @@ public class MyLinkedList {
     Node head;
 
     public boolean isEmpty() {
-        return (head == null) ? true : false;
+        return head == null;
     }
 
     public void add(Object data) {
         if (head == null) {
             head = new Node(data);
             return;
-        }
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
 
-        Node current = head;
-        while (current.next != null) {
-            current = current.next;
+            current.next = new Node(data);
         }
-
-        current.next = new Node(data);
     }
 
     public Object get(int nth) {
         Node current = head;
-
-        for (int j = 0; j < nth - 1; j++) {
-            current = current.next;
-        }
-
         try {
+            for (int i = 1; i < nth; i++) {
+                current = current.next;
+            }
             return current.data;
         } catch (NullPointerException e) {
-            return null;
+            throw new IndexOutOfBoundsException();
         }
     }
 
     public Object getFirst() {
-        return head.data;
+        return head == null ? null : head.data;
     }
 
     public Object getLast() {
@@ -66,35 +64,29 @@ public class MyLinkedList {
 
 
     public void delete(Object object) {
-        if (head.data.equals(object)) {
-            head = head.next;
-            return;
-        }
-
         Node current = head;
 
-        while (current != null) {
-            if (current.next.data.equals(object)) {
-                current.next = current.next.next;
-                return;
+        if (current.data.equals(object)) {
+            head = head.next;
+        } else {
+            Node next = head.next;
+            while (next != null) {
+                if (next.data.equals(object)) {
+                    current.next = next.next;
+                    break;
+                } else {
+                    current = next;
+                    next = next.next;
+                }
             }
-            current = current.next;
         }
     }
 
     public void delete(int nth) {
-        if (nth == 1) {
-            head = head.next;
-            return;
-        }
-        Node current = head;
-
         try {
-            for (int j = 0; j < nth - 2; j++) {
-                current = current.next;
+            for (int i = 0; i < nth; i++) {
+                head = head.next;
             }
-
-            current.next = current.next.next;
         } catch (NullPointerException e) {
             throw new IndexOutOfBoundsException();
         }

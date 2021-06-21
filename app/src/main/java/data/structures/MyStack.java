@@ -1,7 +1,6 @@
 package data.structures;
 
 public class MyStack {
-
     private Node top;
 
     public boolean isEmpty() {

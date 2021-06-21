@@ -1,7 +1,6 @@
 package data.structures;
 
 public class MyQueue {
-
     private Node head;
     private Node tail;
 
